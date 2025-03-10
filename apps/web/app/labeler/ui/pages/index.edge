@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listagem de Arquivos JSON</title>
+  </head>
+  <body>
+    <h1>Arquivos para Rotular</h1>
+
+    <ul>
+      @each(file in files)
+        <li>
+          <a href="{{ route('labels.show', { filename: file }) }}">
+            {{ file }}
+          </a>
+
+          @if(labeledFiles[file])
+            — Já rotulado:
+            <strong>Correto?</strong> {{ labeledFiles[file].isCorrect ? 'Sim' : 'Não' }}
+            <strong>Obs:</strong> {{ labeledFiles[file].observation }}
+          @endif
+        </li>
+      @endeach
+    </ul>
+
+    <p><a href="/logout">Logout</a></p>
+  </body>
+</html>

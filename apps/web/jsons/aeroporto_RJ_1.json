@@ -1,0 +1,12 @@
+{
+    "auxiliadores": [
+        "Entrada com portas automáticas que facilitam o acesso sem a necessidade de empurrar ou puxar as portas manualmente.",
+        "Área coberta que protege os usuários das intempéries enquanto aguardam transporte."
+    ],
+    "obstáculos": [
+        "A presença de escadas ou desníveis que não são visíveis na imagem, mas podem existir nas proximidades, dificultando o acesso para pessoas com mobilidade reduzida.",
+        "Acessibilidade limitada para pessoas com deficiência visual, pois não há informações visuais claras sobre a localização de obstáculos."
+    ],
+    "veredito": "parcial",
+    "justificativa": "Embora a entrada principal tenha portas automáticas que facilitam o acesso, a imagem não fornece informações suficientes sobre a presença de rampas ou escadas nas proximidades. Além disso, a área externa pode apresentar obstáculos que não são visíveis, como desníveis ou falta de sinalização adequada para pessoas com deficiência visual. Portanto, a acessibilidade é considerada parcial."
+}
