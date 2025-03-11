@@ -1,25 +1,20 @@
 import { FormEvent, useState } from 'react'
 import { Inertia } from '@inertiajs/inertia'
-import { InferPageProps } from '@adonisjs/inertia/types'
-import type LabelingController from '#labeler/controllers/labeling_controller'
+import { ShowLabelProps } from '#labeler/types/label'
 
 import AppLayout from '#common/ui/components/app_layout'
 import { Main } from '#common/ui/components/main'
 import Heading from '#common/ui/components/heading'
 
-type Label = {
-  isCorrect: boolean
-  observation?: string
-}
 
-export default function ShowLabel({
-  fileName,
-  jsonData,
-  imageName,
-  existingLabel,
-}: InferPageProps<LabelingController, 'show'> & { existingLabel?: Label }) {
-  const [isCorrect, setIsCorrect] = useState(existingLabel?.isCorrect ?? false)
-  const [observation, setObservation] = useState(existingLabel?.observation ?? '')
+  export default function ShowLabel({
+    fileName,
+    jsonData,
+    imageName,
+    existingLabel,
+  }: ShowLabelProps) {
+    const [isCorrect, setIsCorrect] = useState(existingLabel?.isCorrect ?? false)
+    const [observation, setObservation] = useState(existingLabel?.observation ?? '')
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
