@@ -4,6 +4,8 @@ import { belongsTo, column, computed, hasMany } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 
+import Label from '#labeler/models/label' 
+
 import { attachment, attachmentManager } from '@jrmc/adonis-attachment'
 import type { Attachment } from '@jrmc/adonis-attachment/types/attachment'
 
@@ -45,6 +47,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @hasMany(() => ResetPasswordToken)
   declare resetPasswordTokens: HasMany<typeof ResetPasswordToken>
+
+  @hasMany(() => Label)
+  declare labels: HasMany<typeof Label>
 
   @computed()
   get isAdmin() {
