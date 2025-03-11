@@ -57,7 +57,7 @@ export default class LabelingController {
     const jsonData = JSON.parse(rawData)
 
     // Nome da imagem correspondente ao JSON
-    const imageName = fileName.replace('.json', '.jpg')
+    const imageName = fileName.replace('.json', '.png')
 
     // Verifica se já existe uma rotulação salva
     const userId = auth.user?.id
