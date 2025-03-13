@@ -35,7 +35,7 @@ export default class LabelingController {
     )
 
     // Renderiza a página React via Inertia
-    return inertia.render('labeler/ui/pages/index', { files, labeledFiles })
+    return inertia.render('labeler/index', { files, labeledFiles })
   }
   /**
    * Mostra detalhes de um determinado JSON e a imagem correspondente.
@@ -66,7 +66,7 @@ export default class LabelingController {
       .where('file_name', fileName)
       .first()
 
-    return inertia.render('labeler/ui/pages/show', {
+    return inertia.render('labeler/show', {
       fileName,
       jsonData,
       imageName,
@@ -74,25 +74,24 @@ export default class LabelingController {
         ? { isCorrect: existingLabel.isCorrect, observation: existingLabel.observation }
         : null,
     })
-  }  
+  }
 
   public async store({ request, auth, response, inertia }: HttpContext) {
-    
     const userId = auth.user?.id
-    
+
     if (!userId) {
-      return response.redirect().toPath('/login') 
+      return response.redirect().toPath('/login')
     }
     // Validação dos dados recebidos
     const { fileName, isCorrect, observation } = await request.validateUsing(createLabelValidator)
-    
+
     // Verifica se já existe um Label para esse usuário e esse arquivo
     let label = await Label.query().where('user_id', userId).where('file_name', fileName).first()
 
     if (!label) {
-        label = new Label()
-        label.userId = userId
-        label.fileName = fileName
+      label = new Label()
+      label.userId = userId
+      label.fileName = fileName
     }
 
     // Converte isCorrect para boolean
