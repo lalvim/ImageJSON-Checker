@@ -5,11 +5,17 @@ import AppLayout from '#common/ui/components/app_layout'
 import { Main } from '#common/ui/components/main'
 import Heading from '#common/ui/components/heading'
 
-export default function LabelingPage({ files, labeledFiles }: InferPageProps<LabelingController, 'index'>) {
+export default function LabelingPage({
+  files,
+  labeledFiles,
+}: InferPageProps<LabelingController, 'index'>) {
   return (
     <AppLayout breadcrumbs={[{ label: 'Labeling' }]}>
       <Main>
-        <Heading title="Listagem de Arquivos JSON" description="Selecione um arquivo para rotular." />
+        <Heading
+          title="Listagem de Arquivos JSON"
+          description="Selecione um arquivo para rotular."
+        />
 
         <ul className="list-disc pl-5">
           {files.map((file: string) => (
