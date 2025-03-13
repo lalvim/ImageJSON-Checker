@@ -6,25 +6,27 @@ import AppLayout from '#common/ui/components/app_layout'
 import { Main } from '#common/ui/components/main'
 import Heading from '#common/ui/components/heading'
 
-
-  export default function ShowLabel({
-    fileName,
-    jsonData,
-    imageName,
-    existingLabel,
-  }: ShowLabelProps) {
-    const [isCorrect, setIsCorrect] = useState(existingLabel?.isCorrect ?? false)
-    const [observation, setObservation] = useState(existingLabel?.observation ?? '')
+export default function ShowLabel({
+  fileName,
+  jsonData,
+  imageName,
+  existingLabel,
+}: ShowLabelProps) {
+  const [isCorrect, setIsCorrect] = useState(existingLabel?.isCorrect ?? false)
+  const [observation, setObservation] = useState(existingLabel?.observation ?? '')
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    Inertia.post('/labels', { fileName, isCorrect, observation })
+    Inertia.post('/labeler/labels', { fileName, isCorrect, observation })
   }
 
   return (
     <AppLayout breadcrumbs={[{ label: 'Labeling', href: '/labels' }, { label: fileName }]}>
       <Main>
-        <Heading title={`Arquivo: ${fileName}`} description="Visualize e rotule o JSON associado." />
+        <Heading
+          title={`Arquivo: ${fileName}`}
+          description="Visualize e rotule o JSON associado."
+        />
 
         <div className="mt-4">
           <h2 className="text-lg font-semibold">Conteúdo do JSON</h2>
