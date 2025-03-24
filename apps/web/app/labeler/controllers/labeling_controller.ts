@@ -1,5 +1,4 @@
 import type { HttpContext } from '@adonisjs/core/http'
-
 import { createLabelValidator } from '#labeler/validators'
 
 import fs from 'fs'
@@ -78,10 +77,10 @@ export default class LabelingController {
 
   public async store({ request, auth, response, inertia }: HttpContext) {
     const userId = auth.user?.id
-
     if (!userId) {
       return response.redirect().toPath('/login')
     }
+
     // Validação dos dados recebidos
     const { fileName, isCorrect, observation } = await request.validateUsing(createLabelValidator)
 
