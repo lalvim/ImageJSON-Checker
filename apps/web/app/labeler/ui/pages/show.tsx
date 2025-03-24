@@ -17,7 +17,7 @@ export default function ShowLabel({
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    Inertia.post('/labeler/labels', { fileName, isCorrect, observation })
+    Inertia.post('/labels', { fileName, isCorrect, observation })
   }
 
   return (
